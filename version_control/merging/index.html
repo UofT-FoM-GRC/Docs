@@ -1,0 +1,694 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../committing/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/UofT_CoA.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>Merging - FoM GRC Data Analysis Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#merging" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="FoM GRC Data Analysis Documentation" class="md-header__button md-logo" aria-label="FoM GRC Data Analysis Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/UofT_CoA.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            FoM GRC Data Analysis Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Merging
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="FoM GRC Data Analysis Documentation" class="md-nav__button md-logo" aria-label="FoM GRC Data Analysis Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/UofT_CoA.svg" alt="logo">
+
+    </a>
+    FoM GRC Data Analysis Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_analysis_pipeline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Analysis Pipeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Version Control
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Version Control
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../branches/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Branches
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../committing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Committing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Merging
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Merging
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#always-pull-before-merging" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⬇️ Always Pull Before Merging
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rebase-your-feature-branch-from-the-updated-dev-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➿ Rebase Your Feature Branch from the updated dev Branch
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="➿ Rebase Your Feature Branch from the updated dev Branch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-do-we-do-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why do we do this?!
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolve-conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ Resolve Conflicts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-that-all-tests-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Check that all tests pass
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merge-your-feature-branch-into-dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      📎 Merge Your Feature Branch into dev
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#push-your-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✍️ Push Your Changes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-your-feature-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗑️ Delete Your Feature Branch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-remote-feature-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗑️ Delete Remote Feature Branch
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#always-pull-before-merging" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⬇️ Always Pull Before Merging
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rebase-your-feature-branch-from-the-updated-dev-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➿ Rebase Your Feature Branch from the updated dev Branch
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="➿ Rebase Your Feature Branch from the updated dev Branch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-do-we-do-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why do we do this?!
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolve-conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ Resolve Conflicts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-that-all-tests-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Check that all tests pass
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merge-your-feature-branch-into-dev" class="md-nav__link">
+    <span class="md-ellipsis">
+      📎 Merge Your Feature Branch into dev
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#push-your-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✍️ Push Your Changes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-your-feature-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗑️ Delete Your Feature Branch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-remote-feature-branch" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗑️ Delete Remote Feature Branch
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="merging">Merging</h1>
+<p>Alright, so you've made a feature branch, made some meaningful commits, and now you're ready to merge your changes back into the <code>dev</code> branch.</p>
+<p>You may want to watch this first to get a better understanding of what will follow below: <a href="https://www.youtube.com/watch?v=zOnwgxiC0OA&amp;list=PLfU9XN7w4tFwKwh_xPSQ_X1-hROQEpHnM&amp;index=6">Git Merge vs. Rebase</a>.</p>
+<h2 id="always-pull-before-merging">⬇️ Always Pull Before Merging</h2>
+<p>Before you merge your changes, make sure you pull the latest changes from the <code>dev</code> branch to ensure that you are up-to-date with the latest changes.</p>
+<pre><code class="language-bash">git checkout dev
+git pull
+</code></pre>
+<p>If you have issues with pulling, chances are you haven't set upstream. You can set the upstream branch by running the following command:</p>
+<pre><code class="language-bash">git branch --set-upstream-to=origin/dev dev
+</code></pre>
+<h2 id="rebase-your-feature-branch-from-the-updated-dev-branch">➿ Rebase Your Feature Branch from the updated <code>dev</code> Branch</h2>
+<p>After pulling the latest changes from the <code>dev</code> branch, switch back to your feature branch and rebase it with the updated <code>dev</code> branch.</p>
+<pre><code class="language-bash">git checkout &lt;feature_branch&gt;
+git rebase dev
+</code></pre>
+<h3 id="why-do-we-do-this">Why do we do this?!</h3>
+<p>It is entirely possible that changes to <code>dev</code> may have occurred while you were working on your feature branch. <code>main</code> is used as an example below, but the same concept applies to <code>dev</code>.</p>
+<div style="display: flex; gap: 0.5rem">
+    <img style="width: 50%" src="/assets/images/Rebase_Before.png"></img>
+    <img style="width: 50%" src="/assets/images/Rebase_After.png"></img>
+</div>
+
+<h2 id="resolve-conflicts">⚠️ Resolve Conflicts</h2>
+<p>Now, this may or may not happen, but if there are any conflicts, Git will prompt you to resolve them. </p>
+<p>Here is a useful resource: <a href="https://www.youtube.com/watch?v=Sqsz1-o7nXk">Resolve Git MERGE CONFLICTS: The Definitive Guide</a></p>
+<p>As per resource, you will have to stage changes and make a new commit to resolve the conflict. Assuming you're not too lazy, you may want to squash the conflict resolution commit with the commit that caused the conflict to keep things clean.</p>
+<h2 id="check-that-all-tests-pass">✅ Check that all tests pass</h2>
+<p>Before merging your feature branch into <code>dev</code>, make sure that all tests pass. This is to ensure that your changes do not break any existing functionality.</p>
+<h2 id="merge-your-feature-branch-into-dev">📎 Merge Your Feature Branch into <code>dev</code></h2>
+<p>Once you have resolved any conflicts, you can now merge your feature branch into the <code>dev</code> branch.</p>
+<pre><code class="language-bash">git checkout dev
+git merge &lt;feature_branch&gt;
+</code></pre>
+<p>No issues should happen because you've already resolved any conflicts in the previous step.</p>
+<h2 id="push-your-changes">✍️ Push Your Changes</h2>
+<p>You can now update the remote repository's <code>dev</code> branch with your changes.</p>
+<pre><code class="language-bash">git checkout dev
+git push
+</code></pre>
+<h2 id="delete-your-feature-branch">🗑️ Delete Your Feature Branch</h2>
+<p>After merging your feature branch into <code>dev</code>, you can delete your feature branch.</p>
+<pre><code class="language-bash">git branch -d &lt;feature_branch&gt;
+</code></pre>
+<h2 id="delete-remote-feature-branch">🗑️ Delete Remote Feature Branch</h2>
+<p>If you want to delete the remote feature branch, you can do so by running the following command:</p>
+<pre><code class="language-bash">git push origin --delete &lt;feature_branch&gt;
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+    
+  </body>
+</html>
