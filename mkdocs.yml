@@ -1,0 +1,24 @@
+site_name: FoM GRC Data Analysis Documentation
+# site_url: https://mydomain.org/mysite
+
+theme:
+  name: material
+  palette:
+    primary: "indigo"
+    accent: "indigo"
+  font:
+    text: "Roboto"
+    code: "Roboto Mono"
+  logo: "assets/images/UofT_CoA.svg"
+  favicon: "assets/images/UofT_CoA.svg"
+
+nav:
+  - Home: index.md
+  - Data Analysis Pipeline: data_analysis_pipeline.md
+  - Version Control: 
+    - Branches: version_control/branches.md
+    - Committing: version_control/committing.md
+    - Merging: version_control/merging.md
+
+plugins:
+  - search
